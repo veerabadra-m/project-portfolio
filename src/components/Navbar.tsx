@@ -31,7 +31,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass-strong py-3 shadow-lg shadow-black/30' : 'bg-transparent py-5'
+        scrolled ? 'bg-cream-50/90 backdrop-blur-lg py-3 shadow-lg shadow-navy-900/5 border-b border-navy-200/20' : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -49,8 +49,8 @@ export default function Navbar() {
                 onClick={() => handleNav(link.href)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-all relative ${
                   active === link.href
-                    ? 'text-blue-400 bg-blue-500/10'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                    ? 'text-teal-600 bg-teal-500/8'
+                    : 'text-charcoal-500 hover:text-navy-800 hover:bg-navy-500/5'
                 }`}
               >
                 {link.label}
@@ -59,10 +59,16 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-3">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('switch-view', { detail: 'resume' }))}
+            className="px-5 py-2.5 text-sm font-medium rounded-lg border border-navy-200 text-navy-700 hover:bg-navy-500/5 transition-all"
+          >
+            Resume View
+          </button>
           <button
             onClick={() => handleNav('#contact')}
-            className="px-5 py-2.5 text-sm font-medium rounded-lg bg-gradient-accent text-white border border-blue-400/30 hover:glow-accent-strong transition-all"
+            className="px-5 py-2.5 text-sm font-medium rounded-lg bg-gradient-accent text-cream-100 border border-navy-700/30 hover:glow-accent-strong transition-all"
           >
             Let's Connect
           </button>
@@ -70,7 +76,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="lg:hidden text-slate-300 p-2"
+          className="lg:hidden text-charcoal-600 p-2"
           aria-label="Toggle menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -82,7 +88,7 @@ export default function Navbar() {
           open ? 'max-h-96 mt-4' : 'max-h-0'
         }`}
       >
-        <div className="px-6 pb-4 glass-strong">
+        <div className="px-6 pb-4 bg-cream-50/95 backdrop-blur-lg border-b border-navy-200/20">
           <ul className="flex flex-col gap-1 pt-4">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -90,8 +96,8 @@ export default function Navbar() {
                   onClick={() => handleNav(link.href)}
                   className={`w-full text-left px-4 py-2.5 text-sm font-medium rounded-lg transition-all ${
                     active === link.href
-                      ? 'text-blue-400 bg-blue-500/10'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                      ? 'text-teal-600 bg-teal-500/8'
+                      : 'text-charcoal-500 hover:text-navy-800 hover:bg-navy-500/5'
                   }`}
                 >
                   {link.label}
@@ -100,8 +106,16 @@ export default function Navbar() {
             ))}
             <li className="pt-2">
               <button
+                onClick={() => window.dispatchEvent(new CustomEvent('switch-view', { detail: 'resume' }))}
+                className="w-full px-4 py-2.5 text-sm font-medium rounded-lg border border-navy-200 text-navy-700"
+              >
+                Resume View
+              </button>
+            </li>
+            <li>
+              <button
                 onClick={() => handleNav('#contact')}
-                className="w-full px-4 py-2.5 text-sm font-medium rounded-lg bg-gradient-accent text-white border border-blue-400/30"
+                className="w-full px-4 py-2.5 text-sm font-medium rounded-lg bg-gradient-accent text-cream-100 border border-navy-700/30"
               >
                 Let's Connect
               </button>

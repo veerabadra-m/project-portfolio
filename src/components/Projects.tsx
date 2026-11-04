@@ -122,16 +122,19 @@ export default function Projects() {
               key={project.id}
               className="reveal group card-hover rounded-2xl overflow-hidden relative"
             >
-              <div className="p-5 border-b border-navy-200/20 bg-gradient-to-br from-cream-100/50 to-transparent relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-transparent to-navy-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-       {project.mockup === "jobPortal" ? (
-  <JobPortalMockup />
-) : project.mockup === "gbfc" ? (
-  <GBFCMockup />
-) : (
-  <EcommerceMockup />
-)}
-              <div className="p-6">
+            
+<div className="p-5 border-b border-navy-200/20 bg-gradient-to-br from-cream-100/50 to-transparent relative overflow-hidden">
+  <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-transparent to-navy-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+  {project.mockup === "jobPortal" ? (
+    <JobPortalMockup />
+  ) : project.mockup === "gbfc" ? (
+    <GBFCMockup />
+  ) : null}
+</div>
+
+<div className="p-6">
+
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <span className="text-xs font-mono text-gradient-soft font-semibold">{project.category}</span>

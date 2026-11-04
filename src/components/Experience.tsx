@@ -1,61 +1,154 @@
-import { Briefcase, GitCommit, Server, Layers, Database, GitBranch } from 'lucide-react';
+
+import {
+  Briefcase,
+  GitCommit,
+  Server,
+  Layers,
+  Database,
+  GitBranch,
+  ArrowUpRight,
+} from 'lucide-react';
+
 import { experience } from '@/data/portfolio';
 
 const pointIcons = [Layers, Server, Server, Database, GitBranch, GitCommit];
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-24 px-6 bg-cream-100">
-      <div className="max-w-4xl mx-auto">
-        <div className="reveal text-center mb-14">
-          <p className="text-sm font-mono text-teal-600 tracking-widest mb-2">03 / EXPERIENCE</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-navy-800">Work Experience</h2>
+    <section
+      id="experience"
+      className="relative overflow-hidden bg-[var(--bg-secondary)] px-5 py-24 text-[var(--text-primary)] transition-colors duration-300 sm:px-8 lg:py-28"
+    >
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute -right-32 bottom-10 h-80 w-80 rounded-full bg-[var(--accent)]/[0.06] blur-[110px]" />
+
+      <div className="relative z-10 mx-auto max-w-6xl">
+
+        {/* Section heading */}
+        <div className="reveal mb-16">
+          <p className="mb-4 font-mono text-xs tracking-[0.25em] text-[var(--accent-secondary)] sm:text-sm">
+            03 / EXPERIENCE
+          </p>
+
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <div>
+              <h2 className="text-4xl font-black uppercase leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+                Work{' '}
+                <span className="text-[var(--accent-secondary)]">
+                  Experience.
+                </span>
+              </h2>
+
+              <p className="mt-5 max-w-xl text-base leading-7 text-[var(--text-muted)] sm:text-lg">
+                My professional journey and hands-on development experience.
+              </p>
+            </div>
+
+            <div className="hidden items-center gap-3 font-mono text-xs tracking-[0.2em] text-[var(--text-muted)] md:flex">
+              <span className="h-px w-12 bg-[var(--accent-secondary)]" />
+              MY JOURNEY
+            </div>
+          </div>
         </div>
 
+        {/* Experience timeline */}
         <div className="relative">
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-teal-500/50 via-navy-500/20 to-transparent md:-translate-x-px" />
+
+          {/* Timeline line */}
+          <div className="absolute bottom-4 left-[17px] top-4 w-px bg-gradient-to-b from-[var(--accent-secondary)] via-[var(--border)] to-transparent sm:left-[23px]" />
 
           {experience.map((exp, i) => (
-            <div key={i} className="relative reveal pb-12 last:pb-0">
-              <div className="absolute left-4 md:left-1/2 top-2 w-3.5 h-3.5 rounded-full bg-gradient-to-br from-teal-500 to-navy-600 ring-4 ring-teal-500/15 md:-translate-x-1.75 shadow-lg shadow-teal-500/20 animate-pulse-glow" />
+            <div
+              key={`${exp.company}-${i}`}
+              className="reveal relative pb-12 last:pb-0"
+              style={{ transitionDelay: `${i * 100}ms` }}
+            >
 
-              <div className="md:grid md:grid-cols-2 md:gap-12">
-                <div className={`pl-12 md:pl-0 ${i % 2 === 0 ? 'md:text-right md:pr-12' : 'md:col-start-2 md:pl-12'}`}>
-                  <div className="card-hover rounded-2xl p-6 text-left relative overflow-hidden">
-                    <div className="absolute -top-12 -right-12 w-32 h-32 bg-teal-500/6 rounded-full blur-3xl" />
-                    <div className="flex items-center gap-2 mb-2 relative z-10">
-                      <div className="p-1.5 rounded-lg bg-gradient-to-br from-teal-500/12 to-navy-500/8">
-                        <Briefcase size={16} className="text-teal-600" />
-                      </div>
-                      <h3 className="text-lg font-semibold text-navy-800">{exp.role}</h3>
-                    </div>
-                    <p className="text-gradient-soft font-bold text-sm mb-1 relative z-10">{exp.company}</p>
-                    <p className="text-charcoal-400 text-xs mb-4">{exp.subtitle}</p>
+              {/* Timeline marker */}
+              <div className="absolute left-0 top-7 z-10 flex h-9 w-9 items-center justify-center border border-[var(--accent-secondary)]/50 bg-[var(--bg-secondary)] text-[var(--accent-secondary)] sm:left-[6px]">
+                <Briefcase size={16} />
+              </div>
 
-                    <ul className="space-y-2.5 mb-5">
-                      {exp.points.map((point, pi) => {
-                        const Icon = pointIcons[pi] ?? GitCommit;
-                        return (
-                          <li key={pi} className="flex gap-2.5 text-sm text-charcoal-500 leading-relaxed">
-                            <Icon size={14} className="mt-1 shrink-0 text-charcoal-300" />
-                            <span>{point}</span>
-                          </li>
-                        );
-                      })}
-                    </ul>
+              {/* Experience card */}
+              <div className="ml-14 border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-secondary)] hover:shadow-xl hover:shadow-[var(--accent)]/5 sm:ml-20 sm:p-8">
 
-                    <div className="flex flex-wrap gap-2">
-                      {exp.tech.map((t) => (
-                        <span key={t} className="px-2.5 py-1 rounded-md text-xs font-medium tag-pill hover:border-teal-400/40 transition-all">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
+                {/* Card heading */}
+                <div className="mb-7 flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--accent-secondary)]">
+                      PROFESSIONAL EXPERIENCE / {String(i + 1).padStart(2, '0')}
+                    </p>
+
+                    <h3 className="text-xl font-extrabold leading-snug text-[var(--text-primary)] sm:text-2xl">
+                      {exp.role}
+                    </h3>
+
+                    <p className="mt-2 text-base font-bold text-[var(--accent-secondary)]">
+                      {exp.company}
+                    </p>
+
+                    <p className="mt-1 text-sm text-[var(--text-muted)]">
+                      {exp.subtitle}
+                    </p>
+                  </div>
+
+                  <div className="hidden h-11 w-11 shrink-0 items-center justify-center border border-[var(--border)] bg-[var(--bg-tertiary)] text-[var(--text-secondary)] sm:flex">
+                    <ArrowUpRight size={20} />
+                  </div>
+                </div>
+
+                {/* Responsibilities */}
+                <div className="border-t border-[var(--border)] pt-6">
+                  <p className="mb-5 font-mono text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+                    KEY CONTRIBUTIONS
+                  </p>
+
+                  <ul className="space-y-4">
+                    {exp.points.map((point, pi) => {
+                      const Icon = pointIcons[pi] ?? GitCommit;
+
+                      return (
+                        <li
+                          key={pi}
+                          className="flex items-start gap-3 text-sm leading-7 text-[var(--text-secondary)] sm:text-base"
+                        >
+                          <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center bg-[var(--bg-tertiary)] text-[var(--accent-secondary)]">
+                            <Icon size={14} />
+                          </div>
+
+                          <span>{point}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+
+                {/* Technologies */}
+                <div className="mt-7 border-t border-[var(--border)] pt-6">
+                  <p className="mb-4 font-mono text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+                    TECHNOLOGIES USED
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="border border-[var(--border)] bg-[var(--bg-tertiary)] px-3 py-2 text-xs font-semibold text-[var(--text-secondary)] transition-all duration-200 hover:border-[var(--accent-secondary)] hover:text-[var(--accent-secondary)]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Bottom label */}
+        <div className="mt-12 flex items-center gap-3 font-mono text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+          <span className="h-px w-8 bg-[var(--accent-secondary)]" />
+          LEARNING THROUGH REAL-WORLD EXPERIENCE
         </div>
       </div>
     </section>

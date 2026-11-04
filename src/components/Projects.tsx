@@ -1,32 +1,61 @@
+
 import { useState } from 'react';
-import { Github, ExternalLink, Search, ShoppingCart, Check } from 'lucide-react';
+
+import {
+  Github,
+  ExternalLink,
+  Search,
+  Check,
+  ArrowUpRight,
+} from 'lucide-react';
+
 import { projects, projectFilters } from '@/data/portfolio';
 
 function JobPortalMockup() {
   return (
-    <div className="rounded-xl overflow-hidden card p-4">
-      <div className="flex items-center gap-2 mb-3">
-        <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
-        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
-        <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
-        <span className="ml-2 text-[10px] text-charcoal-400 font-mono">JobPortal — React</span>
+    <div className="overflow-hidden border border-[var(--border)] bg-[var(--surface)] p-4 shadow-sm">
+      <div className="mb-4 flex items-center gap-2 border-b border-[var(--border)] pb-3">
+        <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+        <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent-secondary)]" />
+
+        <span className="ml-2 font-mono text-[10px] text-[var(--text-muted)]">
+          JobPortal — React
+        </span>
       </div>
-      <div className="flex items-center gap-2 mb-3 rounded-lg bg-cream-200/60 px-3 py-2">
-        <Search size={12} className="text-charcoal-400" />
-        <div className="h-2 flex-1 rounded bg-navy-200/30" />
-        <div className="h-4 w-12 rounded bg-teal-500/40" />
+
+      <div className="mb-4 flex items-center gap-2 border border-[var(--border)] bg-[var(--bg-tertiary)] px-3 py-3">
+        <Search size={13} className="text-[var(--text-muted)]" />
+        <div className="h-2 flex-1 rounded-full bg-[var(--border)]" />
+        <div className="h-5 w-14 bg-[var(--accent)]" />
       </div>
-      <div className="space-y-2">
-        {["Frontend Developer", "MERN Stack Engineer", "Full-Stack Developer"].map((title, i) => (
-          <div key={i} className="flex items-center justify-between rounded-lg bg-cream-200/60 px-3 py-2.5">
-            <div className="flex items-center gap-2.5">
-              <div className="w-6 h-6 rounded-md bg-navy-500/20" />
-              <div>
-                <div className="text-[10px] text-charcoal-600 font-medium">{title}</div>
-                <div className="text-[8px] text-charcoal-400">Bangalore · Full-time</div>
+
+      <div className="space-y-3">
+        {[
+          'Frontend Developer',
+          'MERN Stack Engineer',
+          'Full-Stack Developer',
+        ].map((title) => (
+          <div
+            key={title}
+            className="flex items-center justify-between gap-2 border border-[var(--border)] bg-[var(--bg-secondary)] p-3"
+          >
+            <div className="flex min-w-0 items-center gap-3">
+              <div className="h-8 w-8 shrink-0 bg-[var(--accent)]/15" />
+
+              <div className="min-w-0">
+                <p className="truncate text-[10px] font-semibold text-[var(--text-primary)] sm:text-xs">
+                  {title}
+                </p>
+                <p className="mt-1 text-[9px] text-[var(--text-muted)]">
+                  Bangalore · Full-time
+                </p>
               </div>
             </div>
-            <div className="h-4 w-10 rounded bg-teal-500/40 text-[7px] text-cream-100 flex items-center justify-center font-medium">Apply</div>
+
+            <span className="shrink-0 bg-[var(--accent)] px-2 py-1 text-[9px] font-bold text-[var(--accent-contrast)]">
+              Apply
+            </span>
           </div>
         ))}
       </div>
@@ -36,79 +65,119 @@ function JobPortalMockup() {
 
 function GBFCMockup() {
   return (
-    <div className="rounded-xl overflow-hidden card p-4">
-      <div className="flex items-center gap-2 mb-3">
-        <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
-        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
-        <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
-        <span className="ml-2 text-[10px] text-charcoal-400 font-mono">
+    <div className="overflow-hidden border border-[var(--border)] bg-[var(--surface)] p-4 shadow-sm">
+      <div className="mb-4 flex items-center gap-2 border-b border-[var(--border)] pb-3">
+        <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+        <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent-secondary)]" />
+
+        <span className="ml-2 font-mono text-[10px] text-[var(--text-muted)]">
           GBFC — Fitness Centre
         </span>
       </div>
 
-      <div className="rounded-lg bg-navy-800 p-5 text-center mb-3">
-        <p className="text-xs font-mono text-teal-400 tracking-widest mb-2">
+      <div className="mb-4 bg-[#17180f] px-4 py-8 text-center sm:py-10">
+        <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[#d7ff00]">
           GROUND BORN FIGHT CLUB
         </p>
-        <h3 className="text-2xl font-bold text-cream-100">
-          STRENGTH. DISCIPLINE. FIGHT.
+
+        <h3 className="text-xl font-black leading-tight text-[#f5f5ea] sm:text-3xl">
+          STRENGTH.
+          <br />
+          DISCIPLINE.
+          <br />
+          FIGHT.
         </h3>
-        <p className="text-xs text-cream-200/60 mt-2">
+
+        <p className="mt-3 text-[10px] text-[#f5f5ea]/60">
           Train Hard. Fight Strong.
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 mb-3">
-        {["BOXING", "KICKBOXING", "MMA"].map((program) => (
+      <div className="mb-3 grid grid-cols-3 gap-2">
+        {['BOXING', 'KICKBOXING', 'MMA'].map((program) => (
           <div
             key={program}
-            className="rounded-lg bg-cream-200/60 p-3 text-center"
+            className="border border-[var(--border)] bg-[var(--bg-tertiary)] p-3 text-center"
           >
-            <div className="h-1 w-8 mx-auto rounded bg-teal-500/50 mb-2" />
-            <p className="text-[9px] font-bold text-charcoal-600">
+            <div className="mx-auto mb-2 h-1 w-8 bg-[var(--accent-secondary)]" />
+
+            <p className="text-[8px] font-bold text-[var(--text-secondary)] sm:text-[9px]">
               {program}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="rounded-lg bg-cream-200/60 px-3 py-3 flex items-center justify-between">
-        <span className="text-[10px] text-charcoal-500">
+      <div className="flex items-center justify-between border border-[var(--border)] bg-[var(--bg-secondary)] px-3 py-3">
+        <span className="text-[10px] text-[var(--text-muted)]">
           Training & Enquiries
         </span>
-        <span className="text-[9px] font-semibold text-teal-600">
-          JOIN US
+
+        <span className="text-[9px] font-bold text-[var(--accent-secondary)]">
+          JOIN US →
         </span>
       </div>
     </div>
   );
 }
 
-
 export default function Projects() {
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState('All');
 
-  const filtered = filter === "All"
-    ? projects
-    : projects.filter((p) => p.category === filter);
+  const filtered =
+    filter === 'All'
+      ? projects
+      : projects.filter((project) => project.category === filter);
 
   return (
-    <section id="projects" className="relative py-24 px-6 bg-cream-200/50">
-      <div className="max-w-7xl mx-auto">
-        <div className="reveal text-center mb-14">
-          <p className="text-sm font-mono text-teal-600 tracking-widest mb-2">04 / PROJECTS</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-navy-800">Featured Projects</h2>
+    <section
+      id="projects"
+      className="relative overflow-hidden bg-[var(--bg-primary)] px-5 py-24 text-[var(--text-primary)] transition-colors duration-300 sm:px-8 lg:py-28"
+    >
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute -right-32 top-20 h-80 w-80 rounded-full bg-[var(--accent)]/[0.06] blur-[110px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+
+        {/* Section heading */}
+        <div className="reveal mb-14">
+          <p className="mb-4 font-mono text-xs tracking-[0.25em] text-[var(--accent-secondary)] sm:text-sm">
+            04 / PROJECTS
+          </p>
+
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <div>
+              <h2 className="text-4xl font-black uppercase leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+                Selected{' '}
+                <span className="text-[var(--accent-secondary)]">
+                  Work.
+                </span>
+              </h2>
+
+              <p className="mt-5 max-w-xl text-base leading-7 text-[var(--text-muted)] sm:text-lg">
+                A collection of applications and projects built using modern web technologies.
+              </p>
+            </div>
+
+            <div className="hidden items-center gap-3 font-mono text-xs tracking-[0.2em] text-[var(--text-muted)] md:flex">
+              <span className="h-px w-12 bg-[var(--accent-secondary)]" />
+              MY WORK
+            </div>
+          </div>
         </div>
 
-        <div className="reveal flex justify-center gap-2 mb-12">
+        {/* Project filters */}
+        <div className="reveal mb-12 flex flex-wrap gap-2">
           {projectFilters.map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all ${
+              aria-pressed={filter === f}
+              className={`border px-5 py-3 text-xs font-bold transition-all duration-300 sm:text-sm ${
                 filter === f
-                  ? "bg-gradient-accent text-cream-100 glow-accent"
-                  : "card-hover text-charcoal-500 hover:text-navy-800"
+                  ? 'border-[var(--accent)] bg-[var(--accent)] text-[var(--accent-contrast)]'
+                  : 'border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)] hover:border-[var(--accent-secondary)] hover:text-[var(--accent-secondary)]'
               }`}
             >
               {f}
@@ -116,89 +185,143 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {filtered.map((project) => (
-            <div
+        {/* Project cards */}
+        <div className="grid gap-8 lg:grid-cols-2">
+          {filtered.map((project, index) => (
+            <article
               key={project.id}
-              className="reveal group card-hover rounded-2xl overflow-hidden relative"
+              className="reveal group overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-secondary)] hover:shadow-2xl hover:shadow-[var(--accent)]/5"
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-            
-<div className="p-5 border-b border-navy-200/20 bg-gradient-to-br from-cream-100/50 to-transparent relative overflow-hidden">
-  <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-transparent to-navy-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-  {project.mockup === "jobPortal" ? (
-    <JobPortalMockup />
-  ) : project.mockup === "gbfc" ? (
-    <GBFCMockup />
-  ) : null}
-</div>
-
-<div className="p-6">
-
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <span className="text-xs font-mono text-gradient-soft font-semibold">{project.category}</span>
-                    <h3 className="text-xl font-bold text-navy-800 mt-1 group-hover:text-gradient transition-all">
-                      {project.name}
-                    </h3>
-                  </div>
+              {/* Preview */}
+              <div className="relative border-b border-[var(--border)] bg-[var(--bg-tertiary)] p-4 sm:p-6">
+                <div className="absolute right-6 top-6 z-10 border border-[var(--border)] bg-[var(--surface)] px-3 py-2 font-mono text-[9px] tracking-widest text-[var(--text-muted)]">
+                  PROJECT / {String(index + 1).padStart(2, '0')}
                 </div>
 
-                <p className="text-sm text-charcoal-500 leading-relaxed mb-4">
+                {project.mockup === 'jobPortal' ? (
+                  <JobPortalMockup />
+                ) : project.mockup === 'gbfc' ? (
+                  <GBFCMockup />
+                ) : (
+                  <div className="flex min-h-64 items-center justify-center bg-[var(--surface)]">
+                    <p className="font-mono text-xs text-[var(--text-muted)]">
+                      PROJECT PREVIEW
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* Project information */}
+              <div className="p-6 sm:p-8">
+
+                <div className="mb-4">
+                  <p className="mb-2 font-mono text-[10px] font-bold tracking-[0.2em] text-[var(--accent-secondary)]">
+                    {project.category}
+                  </p>
+
+                  <h3 className="text-2xl font-black leading-tight text-[var(--text-primary)] transition-colors group-hover:text-[var(--accent-secondary)] sm:text-3xl">
+                    {project.name}
+                  </h3>
+                </div>
+
+                <p className="mb-6 text-sm leading-7 text-[var(--text-secondary)] sm:text-base">
                   {project.description}
                 </p>
 
-                <ul className="space-y-1.5 mb-4">
-                  {project.features.map((feat) => (
-                    <li key={feat} className="flex items-center gap-2 text-sm text-charcoal-500">
-                      <Check size={14} className="text-teal-500 shrink-0" />
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
+                {/* Features */}
+                <div className="mb-7">
+                  <p className="mb-4 font-mono text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+                    KEY FEATURES
+                  </p>
 
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {project.technologies.map((tech) => (
-                    <span key={tech} className="px-2.5 py-1 rounded-md text-xs font-medium tag-navy hover:border-teal-400/30 hover:bg-teal-500/5 transition-all">
-                      {tech}
-                    </span>
-                  ))}
+                  <ul className="space-y-3">
+                    {project.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-start gap-3 text-sm leading-6 text-[var(--text-secondary)]"
+                      >
+                        <Check
+                          size={16}
+                          className="mt-1 shrink-0 text-[var(--accent-secondary)]"
+                        />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2 mb-5">
-                  {project.badge && (
-                    <span className="px-3 py-1 rounded-full text-xs font-medium tag-pill">
-                      {project.badge}
-                    </span>
-                  )}
-                  {project.badges?.map((b: string) => (
-                    <span key={b} className="px-3 py-1 rounded-full text-xs font-medium tag-pill">
-                      {b}
-                    </span>
-                  ))}
+                {/* Technologies */}
+                <div className="mb-6 border-t border-[var(--border)] pt-6">
+                  <p className="mb-4 font-mono text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+                    BUILT WITH
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="border border-[var(--border)] bg-[var(--bg-tertiary)] px-3 py-2 text-xs font-semibold text-[var(--text-secondary)] transition-colors hover:border-[var(--accent-secondary)] hover:text-[var(--accent-secondary)]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="flex gap-3">
+                {/* Badges */}
+                {(project.badge || project.badges?.length > 0) && (
+                  <div className="mb-6 flex flex-wrap gap-2">
+                    {project.badge && (
+                      <span className="border border-[var(--accent-secondary)]/30 bg-[var(--accent)]/10 px-3 py-1.5 text-[10px] font-bold text-[var(--accent-secondary)]">
+                        {project.badge}
+                      </span>
+                    )}
+
+                    {project.badges?.map((badge: string) => (
+                      <span
+                        key={badge}
+                        className="border border-[var(--border)] px-3 py-1.5 text-[10px] font-semibold text-[var(--text-muted)]"
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Project links */}
+                <div className="flex flex-wrap gap-3 border-t border-[var(--border)] pt-6">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg card-hover text-charcoal-600 text-sm font-medium transition-all"
+                    className="inline-flex items-center gap-2 border border-[var(--border)] px-5 py-3 text-sm font-bold text-[var(--text-primary)] transition-all hover:border-[var(--accent-secondary)] hover:text-[var(--accent-secondary)]"
                   >
-                    <Github size={16} /> GitHub
+                    <Github size={17} />
+                    GitHub
+                    <ArrowUpRight size={14} />
                   </a>
+
                   <a
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-teal-500/12 to-navy-500/8 text-teal-600 border border-teal-500/20 hover:from-teal-500/20 hover:to-navy-500/12 hover:glow-accent text-sm font-medium transition-all"
+                    className="inline-flex items-center gap-2 bg-[var(--accent)] px-5 py-3 text-sm font-bold text-[var(--accent-contrast)] transition-all hover:-translate-y-0.5 hover:opacity-80"
                   >
-                    <ExternalLink size={16} /> Live Demo
+                    <ExternalLink size={17} />
+                    Live Demo
+                    <ArrowUpRight size={14} />
                   </a>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
+        </div>
+
+        {/* Bottom label */}
+        <div className="mt-12 flex items-center gap-3 font-mono text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+          <span className="h-px w-8 bg-[var(--accent-secondary)]" />
+          IDEAS TURNED INTO REAL PROJECTS
         </div>
       </div>
     </section>

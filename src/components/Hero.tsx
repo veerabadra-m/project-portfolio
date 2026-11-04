@@ -1,94 +1,106 @@
-import { ArrowRight, Mail, Download } from 'lucide-react';
-import { personal } from '@/data/portfolio';
 
-function CodeWindow() {
-  return (
-    <div className="relative">
-      <div className="absolute inset-0 bg-teal-500/10 blur-3xl rounded-full animate-pulse-glow" />
-      <div className="relative card rounded-xl overflow-hidden shadow-xl transition-all duration-500 hover:-translate-y-1">
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-navy-200/30 bg-cream-200/50">
-          <div className="w-3 h-3 rounded-full bg-red-400/70" />
-          <div className="w-3 h-3 rounded-full bg-yellow-400/70" />
-          <div className="w-3 h-3 rounded-full bg-green-400/70" />
-          <span className="ml-3 text-xs text-charcoal-400 font-mono">developer.ts</span>
-        </div>
-        <div className="p-5 font-mono text-sm leading-relaxed">
-          <div><span className="text-purple-600">const</span> <span className="text-navy-700">developer</span> <span className="text-charcoal-400">=</span> <span className="text-charcoal-600">{'{'}</span></div>
-          <div className="pl-4"><span className="text-teal-600">name</span><span className="text-charcoal-400">:</span> <span className="text-emerald-600">'Veerabadra M'</span><span className="text-charcoal-400">,</span></div>
-          <div className="pl-4"><span className="text-teal-600">role</span><span className="text-charcoal-400">:</span> <span className="text-emerald-600">'Full-Stack Developer'</span><span className="text-charcoal-400">,</span></div>
-          <div className="pl-4"><span className="text-teal-600">stack</span><span className="text-charcoal-400">:</span> <span className="text-charcoal-600">[</span><span className="text-emerald-600">'React'</span><span className="text-charcoal-400">,</span> <span className="text-emerald-600">'Node'</span><span className="text-charcoal-400">,</span> <span className="text-emerald-600">'MongoDB'</span><span className="text-charcoal-600">]</span><span className="text-charcoal-400">,</span></div>
-          <div className="pl-4"><span className="text-teal-600">location</span><span className="text-charcoal-400">:</span> <span className="text-emerald-600">'Bangalore, IN'</span><span className="text-charcoal-400">,</span></div>
-          <div className="pl-4"><span className="text-teal-600">available</span><span className="text-charcoal-400">:</span> <span className="text-orange-500">true</span><span className="text-charcoal-400">,</span></div>
-          <div className="text-charcoal-600">{'}'}</div>
-          <div className="mt-2 text-charcoal-300">{'// open to opportunities'}</div>
-          <div className="flex items-center mt-1">
-            <span className="text-navy-600">~</span><span className="text-charcoal-400">$</span>
-            <span className="ml-1 w-2 h-4 bg-teal-500 animate-blink inline-block" />
-          </div>
-        </div>
-      </div>
-      <div className="absolute -bottom-4 -right-4 card rounded-lg px-3 py-2 text-xs font-mono text-charcoal-500 animate-float shadow-lg">
-        <span className="text-teal-500">●</span> MERN Stack
-      </div>
-    </div>
-  );
-}
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Mail,
+  Download,
+} from 'lucide-react';
+
+import { personal } from '@/data/portfolio';
 
 export default function Hero() {
   const scrollTo = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(href)?.scrollIntoView({
+      behavior: 'smooth',
+    });
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-grid bg-radial-glow bg-radial-glow-bottom pt-28 pb-16 overflow-hidden">
-      <div className="absolute top-1/4 left-10 w-72 h-72 bg-teal-500/8 rounded-full blur-3xl animate-orb pointer-events-none" />
-      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-navy-500/6 rounded-full blur-3xl animate-orb pointer-events-none" style={{ animationDelay: '4s' }} />
+    <section
+      id="home"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[var(--bg-primary)] px-5 py-32 text-[var(--text-primary)] transition-colors duration-300 sm:px-8 lg:py-28"
+    >
+      {/* Subtle background accent */}
+      <div className="pointer-events-none absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-[var(--accent)]/[0.07] blur-[120px]" />
 
-      <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        <div className="reveal">
-          <p className="text-sm font-mono tracking-widest text-teal-600 mb-4">
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
+
+        <div className="reveal max-w-5xl">
+
+          {/* Greeting */}
+          <p className="mb-7 font-mono text-xs tracking-[0.3em] text-[var(--accent-secondary)] sm:text-sm">
             {personal.greeting}
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-3 text-gradient-name">
+
+          {/* Name */}
+          <h1 className="mb-7 text-[clamp(3rem,9vw,8rem)] font-black uppercase leading-[0.95] tracking-[-0.06em] text-[var(--text-primary)]">
             {personal.name}
+            <span className="text-[var(--accent-secondary)]">.</span>
           </h1>
-          <h2 className="text-2xl md:text-3xl font-bold text-gradient mb-6">
-            {personal.title}
-          </h2>
-          <p className="text-charcoal-500 text-lg leading-relaxed mb-3 max-w-xl">
+
+          {/* Professional title */}
+          <div className="mb-9 flex items-center gap-4">
+            <span className="h-[3px] w-12 bg-[var(--accent-secondary)] sm:w-16" />
+
+            <h2 className="text-lg font-bold uppercase tracking-[0.12em] text-[var(--accent-secondary)] sm:text-2xl">
+              {personal.title}
+            </h2>
+          </div>
+
+          {/* Introduction */}
+          <p className="mb-5 max-w-3xl text-base leading-8 text-[var(--text-secondary)] sm:text-xl sm:leading-9">
             {personal.heroDescription}
           </p>
-          <p className="text-charcoal-400 text-base leading-relaxed mb-8 max-w-xl">
+
+          <p className="mb-12 max-w-2xl text-sm leading-8 text-[var(--text-muted)] sm:text-base">
             {personal.heroSecondary}
           </p>
+
+          {/* Action buttons */}
           <div className="flex flex-wrap gap-3">
+
             <button
               onClick={() => scrollTo('#projects')}
-              className="group px-6 py-3 rounded-lg bg-gradient-accent bg-gradient-accent-hover text-cream-100 font-medium text-sm transition-all glow-accent hover:glow-accent-strong flex items-center gap-2"
+              className="group inline-flex items-center gap-3 border border-[var(--accent)] bg-[var(--accent)] px-6 py-4 text-sm font-bold text-[var(--accent-contrast)] transition-all duration-300 hover:-translate-y-1 hover:opacity-80"
             >
               View Projects
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+
+              <ArrowRight
+                size={17}
+                className="transition-transform group-hover:translate-x-1"
+              />
             </button>
+
             <button
               onClick={() => scrollTo('#contact')}
-              className="px-6 py-3 rounded-lg card-hover text-navy-700 font-medium text-sm flex items-center gap-2"
+              className="inline-flex items-center gap-2 border border-[var(--border)] px-6 py-4 text-sm font-semibold text-[var(--text-primary)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-secondary)] hover:text-[var(--accent-secondary)]"
             >
-              <Mail size={16} />
+              <Mail size={17} />
               Contact Me
             </button>
+
             <a
               href={personal.resumeUrl}
               download
-              className="px-6 py-3 rounded-lg border border-navy-200 card-hover text-charcoal-600 font-medium text-sm flex items-center gap-2"
+              className="inline-flex items-center gap-2 border border-[var(--border)] px-6 py-4 text-sm font-semibold text-[var(--text-secondary)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-secondary)] hover:text-[var(--accent-secondary)]"
             >
-              <Download size={16} />
-              Download Resume
+              <Download size={17} />
+              Resume
+              <ArrowUpRight size={14} />
             </a>
+
           </div>
         </div>
-        <div className="reveal hidden lg:block">
-          <CodeWindow />
+
+        {/* Bottom decoration */}
+        <div className="mt-20 flex items-center gap-4">
+          <span className="h-px w-12 bg-[var(--accent-secondary)]" />
+
+          <span className="font-mono text-[10px] tracking-[0.25em] text-[var(--text-muted)]">
+            PORTFOLIO / 2026
+          </span>
         </div>
+
       </div>
     </section>
   );

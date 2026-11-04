@@ -1,42 +1,100 @@
-import { GraduationCap, Code2, Globe, Puzzle } from 'lucide-react';
+
+import {
+  GraduationCap,
+  Code2,
+  Globe,
+  Puzzle,
+  ArrowUpRight,
+} from 'lucide-react';
+
 import { personal } from '@/data/portfolio';
 
 const tagIcons = [GraduationCap, Code2, Globe, Puzzle];
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 px-6 bg-cream-100 bg-gradient-mesh">
-      <div className="max-w-7xl mx-auto">
-        <div className="reveal text-center mb-14">
-          <p className="text-sm font-mono text-teal-600 tracking-widest mb-2">01 / ABOUT</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-navy-800">About Me</h2>
+    <section
+      id="about"
+      className="relative overflow-hidden bg-[var(--bg-secondary)] px-5 py-24 text-[var(--text-primary)] transition-colors duration-300 sm:px-8 lg:py-28"
+    >
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute -right-32 top-20 h-80 w-80 rounded-full bg-[var(--accent)]/[0.07] blur-[110px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+
+        {/* Section heading */}
+        <div className="reveal mb-16">
+          <p className="mb-4 font-mono text-xs tracking-[0.25em] text-[var(--accent-secondary)] sm:text-sm">
+            01 / ABOUT
+          </p>
+
+          <h2 className="">
+            About{' '}
+            <span className="text-[var(--accent-secondary)]">
+              Me.
+            </span>
+          </h2>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-10 items-start">
-          <div className="lg:col-span-3 reveal">
-            <p className="text-charcoal-500 text-lg leading-relaxed">
-              {personal.about}
-            </p>
+        {/* About content */}
+        <div className="grid items-stretch gap-8 lg:grid-cols-5 lg:gap-12">
+
+          {/* About description */}
+          <div className="reveal lg:col-span-3">
+            <div className="relative h-full border border-[var(--border)] bg-[var(--surface)] p-7 shadow-sm transition-colors duration-300 sm:p-10">
+
+              <p className="text-base leading-8 text-[var(--text-secondary)] sm:text-lg sm:leading-9">
+                {personal.about}
+              </p>
+
+              <div className="mt-9 flex items-start gap-3 border-t border-[var(--border)] pt-7 text-sm font-semibold leading-6 text-[var(--accent-secondary)]">
+                <Code2 size={19} className="mt-1 shrink-0" />
+
+                <span>
+                  Passionate about building useful web applications.
+                </span>
+              </div>
+            </div>
           </div>
 
-          <div className="lg:col-span-2 reveal grid grid-cols-2 gap-3">
-            {personal.aboutTags.map((tag, i) => {
-              const Icon = tagIcons[i] ?? Code2;
-              return (
-                <div
-                  key={tag}
-                  className="card-hover rounded-xl p-4 group relative overflow-hidden"
-                >
-                  <div className="absolute -top-8 -right-8 w-20 h-20 bg-teal-500/8 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <Icon
-                    size={22}
-                    className="text-teal-600 mb-3 group-hover:scale-110 group-hover:text-navy-700 transition-all duration-300 relative z-10"
-                  />
-                  <p className="text-sm font-medium text-charcoal-600 group-hover:text-navy-800 transition-colors relative z-10">{tag}</p>
-                </div>
-              );
-            })}
+          {/* Profile highlights */}
+          <div className="reveal lg:col-span-2">
+            <div className="grid h-full grid-cols-2 gap-4">
+
+              {personal.aboutTags.map((tag, index) => {
+                const Icon = tagIcons[index] ?? Code2;
+
+                return (
+                  <div
+                    key={tag}
+                    className="group flex min-h-40 flex-col justify-between border border-[var(--border)] bg-[var(--surface)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-secondary)] hover:shadow-lg hover:shadow-[var(--accent)]/5 sm:p-6"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center border border-[var(--border)] bg-[var(--bg-tertiary)] text-[var(--text-secondary)] transition-all duration-300 group-hover:border-[var(--accent-secondary)] group-hover:bg-[var(--accent)]/10 group-hover:text-[var(--accent-secondary)]">
+                      <Icon size={23} />
+                    </div>
+
+                    <div className="mt-7 flex items-end justify-between gap-2">
+                      <p className="text-sm font-bold leading-5 text-[var(--text-primary)] sm:text-base">
+                        {tag}
+                      </p>
+
+                      <ArrowUpRight
+                        size={17}
+                        className="shrink-0 text-[var(--text-muted)] transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[var(--accent-secondary)]"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+
+            </div>
           </div>
+        </div>
+
+        {/* Bottom label */}
+        <div className="mt-12 flex items-center gap-3 font-mono text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+          <span className="h-px w-8 bg-[var(--accent-secondary)]" />
+          BUILT WITH CURIOSITY & CONTINUOUS LEARNING
         </div>
       </div>
     </section>

@@ -1,52 +1,173 @@
-import { GraduationCap, Calendar, Award } from 'lucide-react';
+
+import {
+  GraduationCap,
+  Calendar,
+  Award,
+  Globe,
+  ArrowUpRight,
+} from 'lucide-react';
+
 import { education, languages } from '@/data/portfolio';
 
 export default function Education() {
   return (
-    <section id="education" className="relative py-24 px-6 bg-cream-100">
-      <div className="max-w-5xl mx-auto">
-        <div className="reveal text-center mb-14">
-          <p className="text-sm font-mono text-teal-600 tracking-widest mb-2">05 / EDUCATION</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-navy-800">Education</h2>
+    <section
+      id="education"
+      className="relative overflow-hidden bg-[var(--bg-secondary)] px-5 py-24 text-[var(--text-primary)] transition-colors duration-300 sm:px-8 lg:py-28"
+    >
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute -left-32 top-20 h-80 w-80 rounded-full bg-[var(--accent)]/[0.06] blur-[110px]" />
+
+      <div className="relative z-10 mx-auto max-w-6xl">
+
+        {/* Section heading */}
+        <div className="reveal mb-16">
+          <p className="mb-4 font-mono text-xs tracking-[0.25em] text-[var(--accent-secondary)] sm:text-sm">
+            05 / EDUCATION
+          </p>
+
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <div>
+              <h2 className="text-4xl font-black uppercase leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+                Academic{' '}
+                <span className="text-[var(--accent-secondary)]">
+                  Journey.
+                </span>
+              </h2>
+
+              <p className="mt-5 max-w-xl text-base leading-7 text-[var(--text-muted)] sm:text-lg">
+                My educational background and the foundation behind my technical journey.
+              </p>
+            </div>
+
+            <div className="hidden items-center gap-3 font-mono text-xs tracking-[0.2em] text-[var(--text-muted)] md:flex">
+              <span className="h-px w-12 bg-[var(--accent-secondary)]" />
+              QUALIFICATION
+            </div>
+          </div>
         </div>
 
-        <div className="reveal card-hover rounded-2xl p-8 md:p-10 relative overflow-hidden">
-          <div className="flex flex-col md:flex-row md:items-center gap-6">
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-teal-500/12 to-navy-500/8 text-teal-600 transition-all duration-300">
+        {/* Education card */}
+        <div className="reveal relative overflow-hidden border border-[var(--border)] bg-[var(--surface)] p-7 shadow-sm transition-all duration-300 hover:border-[var(--accent-secondary)] sm:p-10">
+
+          {/* Decorative corner */}
+          <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[var(--accent)]/[0.07] blur-3xl" />
+
+          <div className="relative z-10 flex flex-col gap-7 sm:flex-row sm:items-start sm:gap-8">
+
+            {/* Degree icon */}
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center border border-[var(--accent-secondary)]/30 bg-[var(--accent)]/10 text-[var(--accent-secondary)]">
               <GraduationCap size={32} />
             </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-navy-800">{education.degree}</h3>
-              <p className="text-gradient-soft font-bold mt-1">{education.institution}</p>
-              <div className="flex flex-wrap items-center gap-4 mt-4">
-                <div className="flex items-center gap-2 text-sm text-charcoal-500">
-                  <Award size={16} className="text-teal-600" />
-                  CGPA: <span className="text-navy-800 font-semibold">{education.cgpa}</span>
+
+            <div className="min-w-0 flex-1">
+
+              <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--accent-secondary)]">
+                ACADEMIC QUALIFICATION
+              </p>
+
+              <h3 className="text-xl font-black leading-snug text-[var(--text-primary)] sm:text-2xl lg:text-3xl">
+                {education.degree}
+              </h3>
+
+              <p className="mt-3 text-base font-bold text-[var(--accent-secondary)] sm:text-lg">
+                {education.institution}
+              </p>
+
+              {/* Education details */}
+              <div className="mt-8 flex flex-wrap gap-4">
+
+                <div className="flex items-center gap-3 border border-[var(--border)] bg-[var(--bg-tertiary)] px-4 py-3">
+                  <Award size={18} className="text-[var(--accent-secondary)]" />
+
+                  <div>
+                    <p className="font-mono text-[9px] tracking-widest text-[var(--text-muted)]">
+                      CGPA
+                    </p>
+
+                    <p className="mt-1 text-sm font-bold text-[var(--text-primary)]">
+                      {education.cgpa}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-charcoal-500">
-                  <Calendar size={16} className="text-teal-600" />
-                  {education.date}
+
+                <div className="flex items-center gap-3 border border-[var(--border)] bg-[var(--bg-tertiary)] px-4 py-3">
+                  <Calendar size={18} className="text-[var(--accent-secondary)]" />
+
+                  <div>
+                    <p className="font-mono text-[9px] tracking-widest text-[var(--text-muted)]">
+                      PERIOD
+                    </p>
+
+                    <p className="mt-1 text-sm font-bold text-[var(--text-primary)]">
+                      {education.date}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <ArrowUpRight
+              size={22}
+              className="hidden shrink-0 text-[var(--text-muted)] sm:block"
+            />
+          </div>
+
+          {/* Bottom accent */}
+          <div className="absolute bottom-0 left-0 h-1 w-1/3 bg-[var(--accent)]" />
+        </div>
+
+        {/* Languages section */}
+        <div className="reveal mt-20">
+
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="mb-3 font-mono text-xs tracking-[0.2em] text-[var(--accent-secondary)]">
+                COMMUNICATION
+              </p>
+
+              <h3 className="text-3xl font-black uppercase tracking-tight sm:text-4xl">
+                Languages<span className="text-[var(--accent-secondary)]">.</span>
+              </h3>
+
+              <p className="mt-3 text-sm text-[var(--text-muted)]">
+                Languages I speak.
+              </p>
+            </div>
+
+            <Globe
+              size={30}
+              className="hidden text-[var(--accent-secondary)] sm:block"
+            />
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {languages.map((lang, index) => (
+              <div
+                key={lang}
+                className="group flex items-center gap-3 border border-[var(--border)] bg-[var(--surface)] px-5 py-4 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-secondary)]"
+              >
+                <span className="font-mono text-[10px] text-[var(--accent-secondary)]">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+
+                <span className="text-sm font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--accent-secondary)]">
+                  {lang}
+                </span>
+
+                <ArrowUpRight
+                  size={14}
+                  className="text-[var(--text-muted)] transition-colors group-hover:text-[var(--accent-secondary)]"
+                />
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="reveal mt-16 text-center">
-          <div className="inline-block">
-            <h3 className="text-2xl font-bold text-navy-800 mb-2">Languages</h3>
-            <p className="text-charcoal-400 text-sm mb-6">Languages I speak</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            {languages.map((lang) => (
-              <span
-                key={lang}
-                className="px-5 py-2.5 rounded-xl card-hover text-sm font-medium text-charcoal-600 hover:text-navy-800"
-              >
-                {lang}
-              </span>
-            ))}
-          </div>
+        {/* Bottom label */}
+        <div className="mt-14 flex items-center gap-3 font-mono text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+          <span className="h-px w-8 bg-[var(--accent-secondary)]" />
+          KNOWLEDGE IS A CONTINUOUS JOURNEY
         </div>
       </div>
     </section>

@@ -36,12 +36,12 @@ export const skillCategories = [
   {
     title: "Frontend Development",
     icon: "Globe",
-    skills: ["HTML", "CSS", "JavaScript", "React.js", "Next.js"],
+    skills: ["HTML", "CSS", "JavaScript", "React.js"],
   },
   {
     title: "Backend Development",
     icon: "Layers",
-    skills: ["Node.js", "Express.js", "Django"],
+    skills: ["Node.js", "Express.js",],
   },
   {
     title: "Databases",

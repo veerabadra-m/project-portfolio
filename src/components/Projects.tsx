@@ -34,37 +34,56 @@ function JobPortalMockup() {
   );
 }
 
-function EcommerceMockup() {
+function GBFCMockup() {
   return (
     <div className="rounded-xl overflow-hidden card p-4">
       <div className="flex items-center gap-2 mb-3">
         <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
         <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
         <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
-        <span className="ml-2 text-[10px] text-charcoal-400 font-mono">ShopEasy — PHP</span>
+        <span className="ml-2 text-[10px] text-charcoal-400 font-mono">
+          GBFC — Fitness Centre
+        </span>
       </div>
+
+      <div className="rounded-lg bg-navy-800 p-5 text-center mb-3">
+        <p className="text-xs font-mono text-teal-400 tracking-widest mb-2">
+          GROUND BORN FIGHT CLUB
+        </p>
+        <h3 className="text-2xl font-bold text-cream-100">
+          STRENGTH. DISCIPLINE. FIGHT.
+        </h3>
+        <p className="text-xs text-cream-200/60 mt-2">
+          Train Hard. Fight Strong.
+        </p>
+      </div>
+
       <div className="grid grid-cols-3 gap-2 mb-3">
-        {[0, 1, 2].map((i) => (
-          <div key={i} className="rounded-lg bg-cream-200/60 p-2">
-            <div className="h-12 rounded-md bg-gradient-to-br from-teal-500/15 to-navy-500/10 mb-1.5" />
-            <div className="h-1.5 w-3/4 rounded bg-navy-200/30 mb-1" />
-            <div className="flex items-center justify-between">
-              <div className="h-1.5 w-6 rounded bg-teal-500/40" />
-              <ShoppingCart size={10} className="text-teal-600" />
-            </div>
+        {["BOXING", "KICKBOXING", "MMA"].map((program) => (
+          <div
+            key={program}
+            className="rounded-lg bg-cream-200/60 p-3 text-center"
+          >
+            <div className="h-1 w-8 mx-auto rounded bg-teal-500/50 mb-2" />
+            <p className="text-[9px] font-bold text-charcoal-600">
+              {program}
+            </p>
           </div>
         ))}
       </div>
-      <div className="flex items-center justify-between rounded-lg bg-cream-200/60 px-3 py-2">
-        <div className="text-[9px] text-charcoal-500">Cart · 3 items</div>
-        <div className="flex items-center gap-1.5">
-          <div className="text-[9px] text-charcoal-600">$249.97</div>
-          <div className="h-4 w-12 rounded bg-teal-500/40 text-[7px] text-cream-100 flex items-center justify-center font-medium">Checkout</div>
-        </div>
+
+      <div className="rounded-lg bg-cream-200/60 px-3 py-3 flex items-center justify-between">
+        <span className="text-[10px] text-charcoal-500">
+          Training & Enquiries
+        </span>
+        <span className="text-[9px] font-semibold text-teal-600">
+          JOIN US
+        </span>
       </div>
     </div>
   );
 }
+
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
@@ -105,9 +124,13 @@ export default function Projects() {
             >
               <div className="p-5 border-b border-navy-200/20 bg-gradient-to-br from-cream-100/50 to-transparent relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-transparent to-navy-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                {project.mockup === "jobPortal" ? <JobPortalMockup /> : <EcommerceMockup />}
-              </div>
-
+       {project.mockup === "jobPortal" ? (
+  <JobPortalMockup />
+) : project.mockup === "gbfc" ? (
+  <GBFCMockup />
+) : (
+  <EcommerceMockup />
+)}
               <div className="p-6">
                 <div className="flex items-start justify-between mb-3">
                   <div>

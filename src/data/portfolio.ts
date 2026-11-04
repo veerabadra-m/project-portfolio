@@ -13,8 +13,8 @@ export const personal = {
     "Motivated and detail-oriented BE graduate with a strong foundation in web development, programming, and database management. Skilled in HTML, CSS, JavaScript, MongoDB, Express.js, React.js, Node.js, SQL, and Python, with hands-on experience developing web-based projects. A quick learner with good problem-solving skills, seeking an opportunity to apply technical knowledge, gain industry experience, and grow as a software professional.",
   aboutTags: ["BE Graduate", "Full-Stack Developer", "Web Development", "Problem Solving"],
   resumeUrl: "/resume.pdf",
-  githubUrl: "#",
-  linkedinUrl: "#",
+  githubUrl: "https://github.com/veerabadra-m",
+linkedinUrl: "https://www.linkedin.com/in/veerabadra-m",
 };
 
 export const navLinks = [
@@ -34,41 +34,48 @@ export const skillCategories = [
     skills: ["C", "C++", "Python", "Java", "JavaScript", "PHP", "SQL"],
   },
   {
-    title: "Frameworks & Libraries",
+    title: "Frontend Development",
+    icon: "Globe",
+    skills: ["HTML", "CSS", "JavaScript", "React.js", "Next.js"],
+  },
+  {
+    title: "Backend Development",
     icon: "Layers",
-    skills: ["React", "Next.js", "Node.js", "Express", "Django"],
+    skills: ["Node.js", "Express.js", "Django"],
   },
   {
     title: "Databases",
     icon: "Database",
-    skills: ["MySQL", "MongoDB"],
+    skills: ["MongoDB", "MySQL"],
   },
   {
-    title: "Web Development",
-    icon: "Globe",
-    skills: ["HTML", "CSS", "JavaScript"],
-  },
-  {
-    title: "Tools / Version Control",
+    title: "Tools & Version Control",
     icon: "GitBranch",
     skills: ["Git", "GitHub"],
   },
 ];
 
+
 export const experience = [
   {
-    role: "Full-Stack Developer Intern",
-    company: "Zephyr",
-    subtitle: "MERN Stack – Practical Application",
+    role: "Full Stack Development Intern",
+    company: "Zephyr Technologies and Solutions Pvt. Ltd.",
+    subtitle: "MERN Stack Development",
     points: [
-      "Developed 3+ web application modules using the MERN stack.",
-      "Focused on responsive and component-based user interfaces using React.js.",
-      "Built and integrated 5+ RESTful API endpoints using Node.js and Express.js.",
-      "Utilized MongoDB for structured data storage and management.",
-      "Used Git and GitHub for version control.",
-      "Maintained multiple commits throughout the development lifecycle.",
+      "Developed web application modules using the MERN stack.",
+      "Built responsive and reusable user interfaces using React.js.",
+      "Developed and integrated RESTful APIs using Node.js and Express.js.",
+      "Worked with MongoDB for database storage and management.",
+      "Used Git and GitHub for version control and project collaboration.",
     ],
-    tech: ["React", "Node.js", "Express", "MongoDB", "Git", "GitHub"],
+    tech: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Git",
+      "GitHub",
+    ],
   },
 ];
 
@@ -80,16 +87,16 @@ export const projects = [
     name: "Job Portal Web Application",
     category: "Full Stack",
     description:
-      "Developed a job portal web application using the MERN stack, featuring a responsive React.js interface for job seekers and employers.",
+      "Built a full-stack job portal using the MERN stack to connect job seekers and employers through a responsive and user-friendly platform.",
     technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
     features: [
-      "User registration",
-      "Login",
-      "Job posting",
-      "Job search",
+      "User registration and authentication",
+      "Job posting and management",
+      "Job search functionality",
       "Job application management",
+      "Responsive user interface",
     ],
-    badge: "5+ Core Features",
+    badge: "MERN Stack Project",
     badges: null as string[] | null,
     github: "#",
     demo: "#",
@@ -97,25 +104,34 @@ export const projects = [
   },
   {
     id: 2,
-    name: "E-Commerce Web Application",
-    category: "Web Development",
+    name: "Ground Born Fight Club & Fitness Centre",
+    category: "Full Stack",
     description:
-      "Developed a responsive e-commerce web application with multiple core modules for product browsing, shopping cart, authentication, and order management.",
-    technologies: ["HTML", "CSS", "JavaScript", "PHP"],
-    features: [
-      "Product browsing",
-      "Product details",
-      "Shopping cart",
-      "User authentication",
-      "Order management",
+      "Developed a responsive website for a fitness and combat sports centre, showcasing training programs, class schedules, coach information, and an online enquiry facility.",
+    technologies: [
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "CSS",
     ],
-    badges: ["5+ Core Modules", "10+ Product & Cart Operations"],
-    badge: null as string | null,
+    features: [
+      "Responsive fitness centre website",
+      "Training programs and class timetable",
+      "Coach profile and information",
+      "Online enquiry form",
+      "MongoDB enquiry storage",
+      "Email notifications for enquiries",
+    ],
+    badge: "Full Stack Web Application",
+    badges: null as string[] | null,
     github: "#",
     demo: "#",
-    mockup: "ecommerce",
+    mockup: "gbfc",
   },
 ];
+
 
 export const education = {
   degree: "Bachelor of Computer Science and Engineering",

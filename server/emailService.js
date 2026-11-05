@@ -20,12 +20,29 @@ export const sendContactEmail = async ({
   subject,
   message,
 }) => {
-  const mailOptions = {
-    from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,
-    to: process.env.RECEIVER_EMAIL,
-    replyTo: email,
-    subject: `Portfolio Enquiry: ${subject}`,
-    text: `
+  const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'accept': 'application/json',
+      'api-key': process.env.BREVO_API_KEY,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      sender: {
+        name: 'Portfolio Contact',
+        email: process.env.BREVO_SENDER_EMAIL,
+      },
+      to: [
+        {
+          email: process.env.RECEIVER_EMAIL,
+        },
+      ],
+      replyTo: {
+        email,
+        name,
+      },
+      subject: `Portfolio Enquiry: ${subject}`,
+      textContent: `
 New Portfolio Enquiry
 
 Name: ${name}
@@ -34,12 +51,21 @@ Subject: ${subject}
 
 Message:
 ${message}
-    `,
-  };
+      `,
+    }),
+  });
 
-  const info = await transporter.sendMail(mailOptions);
+  const data = await response.json();
 
-  console.log('Email sent successfully:', info.messageId);
+  if (!response.ok) {
+    console.error('Brevo API error:', data);
 
-  return info;
+    throw new Error(
+      data.message || 'Brevo could not send the email.'
+    );
+  }
+
+  console.log('Email sent successfully:', data.messageId);
+
+  return data;
 };

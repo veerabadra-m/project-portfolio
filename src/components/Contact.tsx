@@ -21,6 +21,7 @@ interface Errors {
 }
 
 export default function Contact() {
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -29,7 +30,9 @@ export default function Contact() {
   });
 
   const [errors, setErrors] = useState<Errors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+const [statusMessage, setStatusMessage] = useState('');
+const [statusType, setStatusType] = useState<'success' | 'error' | ''>('');
 
   const validate = (): boolean => {
     const e: Errors = {};
@@ -58,22 +61,60 @@ export default function Contact() {
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
-    ev.preventDefault();
+  
+const handleSubmit = async (ev: FormEvent<HTMLFormElement>) => {
+  ev.preventDefault();
 
-    if (validate()) {
-      setSubmitted(true);
+  if (!validate() || isSending) return;
 
-      setForm({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
+  setIsSending(true);
+  setStatusMessage('');
+  setStatusType('');
 
-      setTimeout(() => setSubmitted(false), 5000);
+  try {
+    const response = await fetch(`${API_URL}/api/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        subject: form.subject.trim(),
+        message: form.message.trim(),
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Unable to send your message.');
     }
-  };
+
+    setStatusType('success');
+    setStatusMessage(data.message || 'Your message has been sent successfully!');
+
+    setForm({
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    });
+
+    setErrors({});
+  } catch (error) {
+    console.error('Contact form submission failed:', error);
+
+    setStatusType('error');
+    setStatusMessage(
+      error instanceof Error
+        ? error.message
+        : 'Something went wrong. Please try again.'
+    );
+  } finally {
+    setIsSending(false);
+  }
+};
 
   const update = (key: keyof typeof form, value: string) => {
     setForm((previous) => ({
@@ -88,7 +129,8 @@ export default function Contact() {
       }));
     }
 
-    setSubmitted(false);
+    setStatusMessage('');
+setStatusType('');
   };
 
   const contactInfo = [
@@ -386,23 +428,29 @@ export default function Contact() {
             </div>
 
             {/* Submit */}
-            <button
-              type="submit"
-              className="flex w-full items-center justify-center gap-3 bg-[var(--accent)] px-6 py-4 text-sm font-black uppercase tracking-widest text-[var(--accent-contrast)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--accent)]/20"
-            >
-              <Send size={17} />
-              Validate Message
-              <ArrowUpRight size={17} />
-            </button>
+        <button
+  type="submit"
+  disabled={isSending}
+  className="flex w-full items-center justify-center gap-3 bg-[var(--accent)] px-6 py-4 text-sm font-black uppercase tracking-widest text-[var(--accent-contrast)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--accent)]/20 disabled:cursor-not-allowed disabled:opacity-60"
+>
+  <Send size={17} />
+  {isSending ? 'Sending Message...' : 'Send Message'}
+  {!isSending && <ArrowUpRight size={17} />}
+</button>
 
-            {submitted && (
-              <p
-                role="status"
-                className="mt-5 border border-[var(--accent-secondary)]/30 bg-[var(--accent)]/10 p-4 text-center text-sm text-[var(--text-primary)]"
-              >
-                Thank you! Your details have been validated successfully.
-              </p>
-            )}
+            {statusMessage && (
+  <p
+    role="status"
+    aria-live="polite"
+    className={`mt-5 border p-4 text-center text-sm ${
+      statusType === 'success'
+        ? 'border-green-500/30 bg-green-500/10 text-[var(--text-primary)]'
+        : 'border-red-500/30 bg-red-500/10 text-red-500'
+    }`}
+  >
+    {statusMessage}
+  </p>
+)}
           </form>
         </div>
 
